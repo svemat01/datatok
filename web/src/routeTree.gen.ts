@@ -9,6 +9,8 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TermsRouteImport } from './routes/terms'
+import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ConnectRouteImport } from './routes/connect'
 import { Route as DashboardRouteRouteImport } from './routes/dashboard/route'
 import { Route as IndexRouteImport } from './routes/index'
@@ -18,6 +20,16 @@ import { Route as DashboardContentRouteImport } from './routes/dashboard/content
 import { Route as DashboardActivityRouteImport } from './routes/dashboard/activity'
 import { Route as AuthCallbackRouteImport } from './routes/auth/callback'
 
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ConnectRoute = ConnectRouteImport.update({
   id: '/connect',
   path: '/connect',
@@ -63,6 +75,8 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/dashboard': typeof DashboardRouteRouteWithChildren
   '/connect': typeof ConnectRoute
+  '/privacy': typeof PrivacyRoute
+  '/terms': typeof TermsRoute
   '/auth/callback': typeof AuthCallbackRoute
   '/dashboard/activity': typeof DashboardActivityRoute
   '/dashboard/content': typeof DashboardContentRoute
@@ -72,6 +86,8 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/connect': typeof ConnectRoute
+  '/privacy': typeof PrivacyRoute
+  '/terms': typeof TermsRoute
   '/auth/callback': typeof AuthCallbackRoute
   '/dashboard/activity': typeof DashboardActivityRoute
   '/dashboard/content': typeof DashboardContentRoute
@@ -83,6 +99,8 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/dashboard': typeof DashboardRouteRouteWithChildren
   '/connect': typeof ConnectRoute
+  '/privacy': typeof PrivacyRoute
+  '/terms': typeof TermsRoute
   '/auth/callback': typeof AuthCallbackRoute
   '/dashboard/activity': typeof DashboardActivityRoute
   '/dashboard/content': typeof DashboardContentRoute
@@ -95,6 +113,8 @@ export interface FileRouteTypes {
     | '/'
     | '/dashboard'
     | '/connect'
+    | '/privacy'
+    | '/terms'
     | '/auth/callback'
     | '/dashboard/activity'
     | '/dashboard/content'
@@ -104,6 +124,8 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/connect'
+    | '/privacy'
+    | '/terms'
     | '/auth/callback'
     | '/dashboard/activity'
     | '/dashboard/content'
@@ -114,6 +136,8 @@ export interface FileRouteTypes {
     | '/'
     | '/dashboard'
     | '/connect'
+    | '/privacy'
+    | '/terms'
     | '/auth/callback'
     | '/dashboard/activity'
     | '/dashboard/content'
@@ -125,11 +149,27 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   DashboardRouteRoute: typeof DashboardRouteRouteWithChildren
   ConnectRoute: typeof ConnectRoute
+  PrivacyRoute: typeof PrivacyRoute
+  TermsRoute: typeof TermsRoute
   AuthCallbackRoute: typeof AuthCallbackRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/connect': {
       id: '/connect'
       path: '/connect'
@@ -211,6 +251,8 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   DashboardRouteRoute: DashboardRouteRouteWithChildren,
   ConnectRoute: ConnectRoute,
+  PrivacyRoute: PrivacyRoute,
+  TermsRoute: TermsRoute,
   AuthCallbackRoute: AuthCallbackRoute,
 }
 export const routeTree = rootRouteImport

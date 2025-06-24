@@ -249,6 +249,62 @@ function LandingPage() {
 					</div>
 				</div>
 			</section>
+
+			{/* Footer */}
+			<footer className="bg-gray-900 text-white py-12">
+				<div className="container mx-auto px-4">
+					<div className="grid gap-8 md:grid-cols-4">
+						<div className="md:col-span-2">
+							<h3 className="text-2xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+								DataTok
+							</h3>
+							<p className="text-gray-300 mb-4 max-w-md">
+								Preserve your TikTok memories with automatic archiving and
+								complete data ownership.
+							</p>
+						</div>
+
+						<div>
+							<h4 className="font-semibold mb-4">Legal</h4>
+							<ul className="space-y-2 text-gray-300">
+								<li>
+									<Link
+										to="/privacy"
+										className="hover:text-purple-400 transition-colors"
+									>
+										Privacy Policy
+									</Link>
+								</li>
+								<li>
+									<Link
+										to="/terms"
+										className="hover:text-purple-400 transition-colors"
+									>
+										Terms of Service
+									</Link>
+								</li>
+							</ul>
+						</div>
+
+						<div>
+							<h4 className="font-semibold mb-4">Contact</h4>
+							<ul className="space-y-2 text-gray-300">
+								<li>support@datatok.srv.ax</li>
+								<li>privacy@datatok.srv.ax</li>
+							</ul>
+						</div>
+					</div>
+
+					<div className="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+						<p>
+							&copy; {new Date().getFullYear()} DataTok. All rights reserved.
+						</p>
+						<p className="mt-2 text-sm">
+							DataTok is not affiliated with TikTok or ByteDance Ltd.
+						</p>
+					</div>
+				</div>
+			</footer>
 		</div>
 	);
 }
